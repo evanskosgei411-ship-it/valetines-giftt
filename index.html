@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Secret Valentine ❤️</title>
+
+<style>
+    body {
+        margin: 0;
+        font-family: Arial, sans-serif;
+        background: linear-gradient(to right, #ff4e50, #fc913a);
+        color: white;
+        text-align: center;
+    }
+
+    .login-box {
+        margin-top: 150px;
+    }
+
+    input {
+        padding: 10px;
+        font-size: 16px;
+        border-radius: 10px;
+        border: none;
+        outline: none;
+    }
+
+    button {
+        padding: 10px 20px;
+        font-size: 16px;
+        border-radius: 20px;
+        border: none;
+        cursor: pointer;
+        background: white;
+        color: #ff4e50;
+        margin-left: 10px;
+    }
+
+    button:hover {
+        background: #ff4e50;
+        color: white;
+    }
+
+    .hidden {
+        display: none;
+    }
+
+    .gallery {
+        padding: 40px 20px;
+    }
+
+    .images {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+        gap: 15px;
+        max-width: 1000px;
+        margin: auto;
+    }
+
+    .images img {
+        width: 100%;
+        border-radius: 15px;
+        transition: 0.4s;
+    }
+
+    .images img:hover {
+        transform: scale(1.05);
+    }
+</style>
+</head>
+
+<body>
+
+<!-- LOGIN SECTION -->
+<div id="loginPage" class="login-box">
+    <h1>🔐 Enter the Secret Password</h1>
+    <input type="password" id="password" placeholder="Enter Password">
+    <button onclick="checkPassword()">Unlock ❤️</button>
+    <p id="error" style="color: yellow;"></p>
+</div>
+
+<!-- VALENTINE PAGE -->
+<div id="valentinePage" class="hidden">
+
+    <h1>Happy Valentine's Day My Love 💕</h1>
+    <p>You unlocked my heart ❤️</p>
+
+    <button onclick="showMessage()">Click for Surprise 💌</button>
+    <p id="message" class="hidden">
+        I love you more than words can say ❤️ <br>
+        Forever and Always 💖
+    </p>
+
+    <div class="gallery">
+        <h2>📸 Our Beautiful Memories</h2>
+        <div class="images">
+            <!-- Replace with your own photos -->
+            <img src="https://images.unsplash.com/photo-1518199266791-5375a83190b7">
+            <img src="https://images.unsplash.com/photo-1501908734255-16579c18c25f">
+            <img src="https://images.unsplash.com/photo-1492724441997-5dc865305da7">
+            <img src="https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e">
+        </div>
+    </div>
+
+    <!-- Music -->
+    <audio id="bgMusic" loop>
+        <source src="music.mp3" type="audio/mpeg">
+    </audio>
+
+</div>
+
+<script>
+    const correctPassword = "Forever123"// CHANGE THIS PASSWORD
+
+    function checkPassword() {
+        const userPassword = document.getElementById("password").value;
+        if(userPassword === correctPassword) {
+            document.getElementById("loginPage").style.display = "none";
+            document.getElementById("valentinePage").style.display = "block";
+            document.getElementById("bgMusic").play();
+        } else {
+            document.getElementById("error").innerText = "Wrong password 😢 Try again!";
+        }
+    }
+
+    function showMessage() {
+        document.getElementById("message").style.display = "block";
+    }
+</script>
+
+</body>
+</html>
